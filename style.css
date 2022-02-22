@@ -1,0 +1,180 @@
+:root {
+  --Very-Dark-Desaturated-Blue: hsl(238, 29%, 16%);
+  --Soft-Red: hsl(14, 88%, 65%);
+  --Soft-Violet: hsl(273, 75%, 66%);
+  --Soft-Blue: hsl(240, 73%, 65%);
+  --Very-Dark-Grayish-Blue: hsl(237, 12%, 33%);
+  --Dark-Grayish-Blue: hsl(240, 6%, 50%);
+  --Light-Grayish-Blue: hsl(240, 5%, 91%);
+  --White: hsl(0, 0%, 100%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Kumbh Sans;
+  min-height: 100vh;
+  background: linear-gradient(var(--Soft-Violet), var(--Soft-Blue));
+  display: grid;
+  place-items: center;
+  padding: 2rem 1em 0;
+}
+body::after {
+  content: "Coded by Burak Özcan";
+  color: var(--White);
+  font-size: 3rem;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  background: linear-gradient(var(--Soft-Violet), var(--Soft-Blue));
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  animation: creator 5s forwards;
+}
+@keyframes creator {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    transform: translateY(-100%);
+  }
+}
+
+.FAQ__wrapper {
+  width: 350px;
+  margin: 5rem 0 2rem;
+  padding-bottom: 3rem;
+  display: grid;
+  place-items: center;
+  background-color: var(--White);
+  border-radius: 1rem;
+  position: relative;
+}
+.FAQ__wrapper::before {
+  content: "";
+  position: absolute;
+  background-image: url(./images/bg-pattern-mobile.svg);
+  top: 0%;
+  height: 104px;
+  background-size: contain;
+  width: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.FAQ__photo {
+  background-image: url(./images/illustration-woman-online-mobile.svg);
+  width: 100%;
+  height: 150px;
+  transform: translateY(-60%);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.FAQ__title {
+  max-width: 250px;
+  margin: -2rem 0 1rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.FAQ__content {
+  margin-left: -1.5rem;
+  list-style: none;
+}
+.FAQ__container {
+  display: grid;
+  position: relative;
+}
+
+.FAQ__question {
+  width: 270px;
+  cursor: pointer;
+  margin: 1rem 0;
+  font-weight: 400;
+  color: var(--Very-Dark-Desaturated-Blue);
+}
+.FAQ__question::before {
+  content: url(./images/icon-arrow-down.svg);
+  position: absolute;
+  right: 0;
+  margin-right: -1rem;
+}
+.FAQ__container.active .FAQ__question::before {
+  transform: rotate(180deg);
+}
+.FAQ__question:hover {
+  color: var(--Soft-Red);
+}
+.FAQ__answer {
+  max-width: 250px;
+  margin-bottom: 0.5rem;
+  display: none;
+}
+.FAQ__line {
+  width: 108%;
+  height: 1px;
+  background-color: var(--Light-Grayish-Blue);
+}
+.active .FAQ__question {
+  color: var(--Very-Dark-Grayish-Blue);
+  font-weight: 700;
+}
+.active .FAQ__answer {
+  display: block;
+  color: var(--Dark-Grayish-Blue);
+}
+@media only screen and (min-width: 900px) {
+  body {
+    padding: 0;
+  }
+  .FAQ {
+    margin-top: 2rem;
+    position: relative;
+  }
+  .FAQ::after {
+    content: url(./images/illustration-box-desktop.svg);
+    position: absolute;
+    left: 0%;
+    transform: translate(-45%, -35%);
+    top: 50%;
+  }
+  .FAQ__wrapper {
+    padding-top: 2rem;
+    margin: 0;
+    width: 800px;
+    grid-template-areas: "A B" "A C";
+    overflow: hidden;
+  }
+  .FAQ__wrapper::before {
+    background-image: url(./images/bg-pattern-desktop.svg);
+    top: 50%;
+    width: 472px;
+    height: 472px;
+    left: 0;
+    transform: translate(-12%, -50%);
+  }
+  .FAQ__photo {
+    grid-area: A;
+    background-image: url(./images/illustration-woman-online-desktop.svg);
+    height: 359px;
+    width: 472px;
+    transform: translate(-15%, 0);
+  }
+  .FAQ__title {
+    grid-area: B;
+    align-self: flex-end;
+    justify-self: baseline;
+    margin: 0 2rem 0 -1rem;
+  }
+  .FAQ__content {
+    grid-area: C;
+    margin: 0 2rem 0 -1rem;
+    padding-right: 3rem;
+  }
+}
